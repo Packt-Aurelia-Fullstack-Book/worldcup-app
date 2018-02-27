@@ -6,7 +6,8 @@ const logIn = (username, password)  => {
     if (username == 'admin' && password == 'admin') {
         
         let userData = {
-            name: "Admin"
+            name: "Admin",
+            permissions: ["admin:create:match"]
         }
         
         return generateToken(userData)
