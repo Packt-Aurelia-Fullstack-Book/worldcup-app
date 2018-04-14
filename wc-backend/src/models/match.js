@@ -16,7 +16,10 @@ const MatchSchema = new mongoose.Schema({
     score: {
       team_1: Number,
       team_2: Number
-    }
-})
+    },
+    subscribers: [
+      {type: String}
+    ]
+}, { usePushEach: true })
   
 module.exports = mongoose.model('match', MatchSchema)

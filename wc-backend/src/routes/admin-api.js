@@ -28,13 +28,17 @@ const updateScore = async (matchId, teamId) => {
 api
   .route('/admin/match/:id?')
   .post(auth({ secret: 's3cret'}),
-    guard.check('admin:create:match'),
-  (req, res, next) => {
-     
+    guard.check('admin'),
+  (req, res, next) => {     
     const match = new Match(req.body)
-      match.save()
-        .then(data => res.json(data))
-        .catch(err => { next(err) } )
+    match.score = {
+      team_1: 0,
+      team_2: 0
+    }
+    match.subscribers = []
+    match.save()
+      .then(data => res.json(data))
+      .catch(err => { next(err) } )
      
   })
    .put((req, res, next) => {
@@ -46,6 +50,12 @@ api
       .then(match => res.json(match))
       .catch(err => { next(err) })
 
+  })
+  .delete((req, res, next) => {
+    const matchId = req.params.id
+    Match.deleteOne({_id: matchId})
+      .then(data => res.json(data))
+      .catch(err => { next(err) } )
   })
 
 
