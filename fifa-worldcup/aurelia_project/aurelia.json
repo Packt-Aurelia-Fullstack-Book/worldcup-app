@@ -1,5 +1,5 @@
 {
-  "name": "fifa-worldcup",
+  "name": "testapp",
   "type": "project:application",
   "bundler": {
     "id": "cli",
@@ -79,26 +79,20 @@
             "main": "aurelia-testing",
             "env": "dev"
           },
-          {
-            "name": "aurelia-validation",
-            "path": "../node_modules/aurelia-validation/dist/amd",
-            "main": "aurelia-validation"
-          },
-          "text",
+
+
           {
             "name": "aurelia-cookie",
             "path": "../node_modules/aurelia-cookie/dist/amd",
             "main": "index"
-          }
-        ]
-      },
-      {
-        "name": "materialize-bundle.js",
-        "dependencies": [
+          },
+
+          "text",
           "jquery",
+          "tslib",
           {
-            "name": "materialize-css",
-            "path": "../node_modules/materialize-css/dist",
+            "name": "materialize-amd",
+            "path": "../node_modules/materialize-amd/dist",
             "main": "js/materialize.amd",
             "deps": [
               "jquery"
@@ -110,22 +104,13 @@
           },
           {
             "name": "aurelia-materialize-bridge",
-            "path": "../node_modules/aurelia-materialize-bridge/dist/amd",
             "main": "index",
-            "deps": [
-              "jquery"
-            ],
+            "path": "../node_modules/aurelia-materialize-bridge/dist/amd",
             "resources": [
-              "**/*.{css,html}",
-              "index.js"
+              "**/*.{css,html}"
             ]
           }
         ]
-      },
-      {
-        "name": "aurelia-validation",
-        "path": "../node_modules/aurelia-validation/dist/amd",
-        "main": "aurelia-validation"
       }
     ],
     "loader": {
@@ -139,7 +124,7 @@
             ".html",
             ".css"
           ],
-          "stub": false
+          "stub": true
         }
       ]
     }
@@ -179,8 +164,9 @@
     "displayName": "WebStorm"
   },
   "unitTestRunner": {
-    "id": "none",
-    "displayName": "None"
+    "id": "karma",
+    "displayName": "Karma",
+    "source": "test/unit/**/*.js"
   },
   "paths": {
     "root": "src",
@@ -189,5 +175,9 @@
     "attributes": "resources/attributes",
     "valueConverters": "resources/value-converters",
     "bindingBehaviors": "resources/binding-behaviors"
+  },
+  "testFramework": {
+    "id": "jasmine",
+    "displayName": "Jasmine"
   }
 }

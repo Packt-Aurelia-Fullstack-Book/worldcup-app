@@ -2,10 +2,8 @@ import environment from './environment';
 
 export function configure(aurelia) {
   aurelia.use
+    .plugin('aurelia-materialize-bridge', b => b.useAll().preventWavesAttach())
     .standardConfiguration()
-    .plugin('aurelia-materialize-bridge', b => b.useAll())
-    //.plugin()/* <<<<  You must create a new plugin section*/
-    .plugin('aurelia-validation')
     .feature('resources');
 
   if (environment.debug) {
